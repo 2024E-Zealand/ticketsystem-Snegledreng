@@ -24,7 +24,7 @@ namespace TicketClassLibrary.Tests
         {
             MC testSubject = new();
 
-            Assert.AreEqual("MC", testSubject.Vehicle());
+            Assert.AreEqual("MC", testSubject.VehicleType());
         }
     }
 }

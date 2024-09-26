@@ -6,24 +6,34 @@ using System.Threading.Tasks;
 
 namespace TicketClassLibrary
 {
-    public class MC : Vehicle
+    public abstract class Vehicle
     {
+        /// <summary>
+        /// String containing the license plate of a vehicle.
+        /// </summary>
+        public string LicensePlate { get; set; }
+
+        /// <summary>
+        /// Date of the given fare.
+        /// </summary>
+        public DateTime Date { get; set; }
+
         /// <summary>
         /// Function to check the price for a vehicles fare
         /// </summary>
         /// <returns>Double with the price of the fare.</returns>
-        public override double Price()
+        public virtual double Price()
         {
-            return 125.0;
+            return -1;
         }
 
         /// <summary>
         /// Function to check the type of vehicle crossing the bridge.
         /// </summary>
         /// <returns>String with description of vehicles type.</returns>
-        public override string VehicleType()
+        public virtual string VehicleType()
         {
-            return "MC";
+            return "";
         }
     }
 }

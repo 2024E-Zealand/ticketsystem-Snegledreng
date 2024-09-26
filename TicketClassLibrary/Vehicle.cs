@@ -8,15 +8,36 @@ namespace TicketClassLibrary
 {
     public abstract class Vehicle
     {
+        private string _licensePlate;
+        private DateTime _date;
+
         /// <summary>
-        /// String containing the license plate of a vehicle.
+        /// String containing the license plate of a vehicle. Must not be longer than 7 characters.
         /// </summary>
-        public string LicensePlate { get; set; }
+        public string LicensePlate
+        {
+            get => _licensePlate;
+            set
+            {
+                if (value.Length <= 7)
+                {
+                    _licensePlate = value;
+                }
+                else
+                {
+                    throw new ArgumentException("License plate too long. Must be 7 characters or less.", value);
+                }
+            }
+        }
 
         /// <summary>
         /// Date of the given fare.
         /// </summary>
-        public DateTime Date { get; set; }
+        public DateTime Date
+        {
+            get => _date;
+            set => _date = value;
+        }
 
         /// <summary>
         /// Function to check the price for a vehicles fare

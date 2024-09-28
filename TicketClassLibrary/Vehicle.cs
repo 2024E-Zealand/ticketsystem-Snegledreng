@@ -10,6 +10,9 @@ namespace TicketClassLibrary
     {
         private string _licensePlate;
         private DateTime _date;
+        private bool _brobizz;
+        private double _priceForVehicle;
+        private string _typeOfVehicle;
 
         /// <summary>
         /// String containing the license plate of a vehicle. Must not be longer than 7 characters.
@@ -40,21 +43,45 @@ namespace TicketClassLibrary
         }
 
         /// <summary>
+        /// Whether a vehicle has Brobizz or not.
+        /// </summary>
+        public bool Brobizz
+        {
+            get => _brobizz;
+            set => _brobizz = value;
+        }
+
+        public double PriceForVehicle
+        {
+            get => _priceForVehicle;
+            set => _priceForVehicle = value;
+        }
+
+        public string TypeOfVehicle
+        {
+            get => _typeOfVehicle;
+            set => _typeOfVehicle = value;
+        }
+
+        /// <summary>
         /// Function to check the price for a vehicles fare
         /// </summary>
         /// <returns>Double with the price of the fare.</returns>
-        public virtual double Price()
+        public double Price()
         {
-            return -1;
+            if (Brobizz == true)
+                return PriceForVehicle * 0.95;
+            else
+                return PriceForVehicle;
         }
 
         /// <summary>
         /// Function to check the type of vehicle crossing the bridge.
         /// </summary>
         /// <returns>String with description of vehicles type.</returns>
-        public virtual string VehicleType()
+        public string VehicleType()
         {
-            return "";
+            return this.TypeOfVehicle;
         }
     }
 }

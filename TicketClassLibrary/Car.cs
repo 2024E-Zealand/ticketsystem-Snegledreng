@@ -5,25 +5,24 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TicketClassLibrary
-{
+{    
+    /// <summary>
+    /// Ticket for a car.
+    /// </summary>
     public class Car : Vehicle
     {
         /// <summary>
-        /// Function to check the price for a vehicles fare
+        /// Constructor for a car ticket.
         /// </summary>
-        /// <returns>Double with the price of the fare.</returns>
-        public override double Price()
+        /// <param name="licensePlate">License plate of the car. Cannot be more than 7 characters.</param>
+        /// <param name="brobizz">Whether the car has Brobizz or not.</param>
+        public Car(string licenseplate, bool brobizz)
         {
-            return 240.0;
-        }
-
-        /// <summary>
-        /// Function to check the type of vehicle crossing the bridge.
-        /// </summary>
-        /// <returns>String with description of vehicles type.</returns>
-        public override string VehicleType()
-        {
-            return "Car";
+            this.LicensePlate = licenseplate;
+            this.Brobizz = brobizz;
+            this.Date = DateTime.Now;
+            this.PriceForVehicle = 240.0;
+            this.TypeOfVehicle = "Car";
         }
     }
 }

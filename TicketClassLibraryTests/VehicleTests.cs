@@ -14,7 +14,7 @@ namespace TicketClassLibraryTests
         public void CarPriceTest()
         {
             //Arrange
-            Car testSubject = new();
+            Car testSubject = new("123", false);
             //Assert
             Assert.AreEqual(240.0, testSubject.Price());
         }
@@ -23,7 +23,7 @@ namespace TicketClassLibraryTests
         public void CarVehicleTypeTest()
         {
             //Arrange
-            Car testSubject = new();
+            Car testSubject = new("123", false);
             //Assert
             Assert.AreEqual("Car", testSubject.VehicleType());
         }
@@ -31,7 +31,7 @@ namespace TicketClassLibraryTests
         [TestMethod()]
         public void MCPriceTest()
         {
-            MC testSubject = new();
+            MC testSubject = new("123", false);
 
             Assert.AreEqual(125.0, testSubject.Price());
         }
@@ -39,7 +39,7 @@ namespace TicketClassLibraryTests
         [TestMethod()]
         public void MCVehicleTypeTest()
         {
-            MC testSubject = new();
+            MC testSubject = new("123", false);
 
             Assert.AreEqual("MC", testSubject.VehicleType());
         }
@@ -48,7 +48,7 @@ namespace TicketClassLibraryTests
         public void LicensePlateLengthTest()
         {
             //Arrange
-            Car testSubject = new();
+            Car testSubject = new("123", false);
             //Act
             testSubject.LicensePlate = "AB12345";
             //Assert
@@ -59,7 +59,7 @@ namespace TicketClassLibraryTests
         public void LicensePlateLengthTestException()
         {
             //Arrange
-            Car testSubject = new();
+            Car testSubject = new("123", false);
             //Act
             void Act()
             {
@@ -67,6 +67,26 @@ namespace TicketClassLibraryTests
             }
             //Assert
             Assert.ThrowsException<ArgumentException>(Act);
+        }
+
+        [TestMethod()]
+        public void BrobizzPriceIsDifferentTest()
+        {
+            //Arrange
+            Car testSubject1 = new("123", false);
+            Car testSubject2 = new("123", true);
+            //Assert
+            Assert.AreNotEqual(testSubject1.Price(), testSubject2.Price());
+        }
+
+        [TestMethod()]
+        public void BrobizzPriceIsFivePercentTest()
+        {
+            MC testSubject = new("123", true);
+            double actualPrice = testSubject.Price();
+            double expectedPrice = 125 * 0.95;
+
+            Assert.AreEqual(expectedPrice, actualPrice);
         }
     }
 }

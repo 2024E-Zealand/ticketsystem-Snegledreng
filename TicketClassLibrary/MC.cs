@@ -6,24 +6,23 @@ using System.Threading.Tasks;
 
 namespace TicketClassLibrary
 {
+    /// <summary>
+    /// Ticket for a motorcycle.
+    /// </summary>
     public class MC : Vehicle
     {
         /// <summary>
-        /// Function to check the price for a vehicles fare
+        /// Constructor for a motorcycle ticket.
         /// </summary>
-        /// <returns>Double with the price of the fare.</returns>
-        public override double Price()
+        /// <param name="licensePlate">License plate of the motorcycle. Cannot be more than 7 characters.</param>
+        /// <param name="brobizz">Whether the motorcycle has Brobizz or not.</param>
+        public MC(string licensePlate, bool brobizz)
         {
-            return 125.0;
-        }
-
-        /// <summary>
-        /// Function to check the type of vehicle crossing the bridge.
-        /// </summary>
-        /// <returns>String with description of vehicles type.</returns>
-        public override string VehicleType()
-        {
-            return "MC";
+            this.LicensePlate = licensePlate;
+            this.Brobizz = brobizz;
+            this.Date = DateTime.Now;
+            this.PriceForVehicle = 125.0;
+            this.TypeOfVehicle = "MC";
         }
     }
 }
